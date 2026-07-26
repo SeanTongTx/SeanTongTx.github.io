@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>童潇 - U3D 简历</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: rgb(244,244,244);
+    color: #2d3748;
+    line-height: 1.7;
+    padding: 0;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+    overflow-x: hidden;
+  }
+  .bg-back {
+    position: fixed;
+    top: 0; right: 0;
+    width: 40vw; height: 100vh;
+    background: url("https://i0.hdslb.com/bfs/openplatform/383b7fabb4ad3fee2b58ef94c7e082d6bedae80d.png@1e_1c.webp") center/contain no-repeat;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .container { position: relative; z-index: 1; }
+  .container {
+    max-width: 920px; margin: 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,.06), 0 1px 4px rgba(0,0,0,.04);
+    padding: 52px 60px;
+    margin-top: 48px; margin-bottom: 48px;
+    transition: box-shadow .3s;
+  }
+  .container:hover { box-shadow: 0 8px 40px rgba(0,0,0,.08), 0 2px 8px rgba(0,0,0,.04); }
+
+  /* header */
+  .header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px 24px; }
+  .header-left { display: flex; align-items: center; gap: 16px; }
+  .avatar {
+    width: 60px; height: 60px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .name { font-size: 28px; font-weight: 700; letter-spacing: 1px; line-height: 1.2; }
+  .name-sub { font-size: 13px; color: #718096; margin-top: 2px; }
+  .header-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .header-tag {
+    display: inline-block; background: #ebf4ff; color: #2b6cb0;
+    font-size: 12px; padding: 3px 12px; border-radius: 14px;
+    font-weight: 500; white-space: nowrap;
+  }
+
+  /* info grid */
+  .info-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px 32px;
+    background: #f7fafc; border-radius: 10px; padding: 18px 24px;
+    margin-top: 24px;
+  }
+  .info-item { display: flex; align-items: center; gap: 6px; font-size: 14px; }
+  .info-icon { width: 16px; text-align: center; color: #4a5568; flex-shrink: 0; }
+  .info-label { color: #718096; }
+  .info-value { color: #2d3748; font-weight: 500; }
+  .bili-link { color: #2b6cb0; text-decoration: none; font-weight: 500; }
+  .bili-link:hover { text-decoration: underline; color: #1a4f8b; }
+
+  /* sections */
+  .section { margin-top: 36px; }
+  .section-title {
+    font-size: 15px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; color: #2b6cb0;
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 18px;
+  }
+  .section-title::after {
+    content: ""; flex: 1; height: 1px;
+    background: linear-gradient(to right, #e2e8f0, transparent);
+  }
+
+  /* highlight */
+  .highlight-box {
+    background: linear-gradient(135deg, #f7fafc, #edf2f7);
+    border-radius: 10px; padding: 18px 24px;
+    font-size: 14px; color: #4a5568; line-height: 1.8;
+    border-left: 3px solid #2b6cb0;
+    margin-bottom: 4px;
+  }
+
+  /* job timeline */
+  .job-list { position: relative; }
+  .job-list::before {
+    content: ""; position: absolute; left: 96px; top: 8px; bottom: 8px;
+    width: 1px; background: #e2e8f0;
+  }
+  .job {
+    display: flex; gap: 20px; padding-bottom: 28px;
+    position: relative;
+  }
+  .job:last-child { padding-bottom: 0; }
+  .job-date-col {
+    width: 80px; flex-shrink: 0; text-align: right;
+    font-size: 12px; color: #a0aec0; font-weight: 500;
+    padding-top: 1px; line-height: 1.4; letter-spacing: .3px;
+  }
+  .job-dot {
+    position: absolute; left: 92px; top: 4px;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: #2b6cb0; border: 2px solid #fff;
+    box-shadow: 0 0 0 1px #2b6cb0;
+    flex-shrink: 0;
+  }
+  .job-content { flex: 1; min-width: 0; }
+  .job-header { margin-bottom: 2px; }
+  .job-company { font-weight: 600; font-size: 15px; color: #1a202c; }
+  .job-role { color: #4a5568; font-size: 14px; margin-left: 4px; }
+  .job-subtitle { color: #718096; font-size: 13px; margin-bottom: 10px; }
+  .job-desc {
+    margin: 0; padding: 0; list-style: none;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .job-desc li {
+    font-size: 14px; color: #4a5568; line-height: 1.6;
+    padding-left: 16px; position: relative;
+  }
+  .job-desc li::before {
+    content: ""; position: absolute; left: 2px; top: 10px;
+    width: 5px; height: 1px; background: #a0aec0;
+  }
+
+  /* projects */
+  .project {
+    display: flex; gap: 16px; padding: 14px 16px; margin-bottom: 6px;
+    border-radius: 8px; transition: background .2s;
+  }
+  .project:hover { background: #f7fafc; }
+  .project-icon {
+    width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0;
+    background: linear-gradient(135deg, #ebf4ff, #d6e4ff);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 700; color: #2b6cb0; margin-top: 2px;
+  }
+  .project-body { flex: 1; min-width: 0; }
+  .project-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; }
+  .project-name { font-weight: 600; font-size: 14px; color: #1a202c; }
+  .project-date { color: #a0aec0; font-size: 12px; white-space: nowrap; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+  .project-tag {
+    display: inline-block; background: #edf2f7; color: #4a5568;
+    font-size: 11px; padding: 1px 10px; border-radius: 10px;
+  }
+  .project-desc { margin-top: 6px; font-size: 13px; color: #718096; line-height: 1.5; }
+
+  /* portfolio category cards */
+  .cat-card:hover { border-color: #2b6cb0 !important; background: #ebf4ff !important; }
+
+  /* education */
+  .edu-item {
+    display: flex; align-items: baseline; gap: 20px; padding: 14px 0;
+    flex-wrap: wrap;
+  }
+  .edu-school { font-weight: 600; font-size: 15px; color: #1a202c; }
+  .edu-meta { color: #718096; font-size: 13px; }
+  .edu-major { color: #4a5568; font-size: 14px; }
+
+  /* responsive */
+  @media (max-width: 768px) {
+    .container { padding: 28px 20px; }
+    .info-grid { grid-template-columns: 1fr; }
+    .job { gap: 12px; }
+    .job-date-col { width: 64px; font-size: 11px; }
+    .job-list::before { left: 78px; }
+    .job-dot { left: 74px; }
+  }
+  @media (max-width: 480px) {
+    .container { padding: 20px 16px; margin-top: 24px; margin-bottom: 24px; }
+    .avatar { width: 48px; height: 48px; }
+    .name { font-size: 22px; }
+    .job { flex-direction: column; gap: 4px; }
+    .job-date-col { width: auto; text-align: left; }
+    .job-list::before, .job-dot { display: none; }
+    .info-grid { padding: 14px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="bg-back"></div>
+<div class="container">
+
+  <div class="header">
+    <div class="header-left">
+      <img class="avatar" src="https://i0.hdslb.com/bfs/album/ab5f060ff19ca24d4fbd70d5fd01bd21ea23407f.png" alt="头像">
+      <div>
+        <div class="name">童潇</div>
+        <div class="name-sub">U3D 技术美术 / U3D 客户端</div>
+      </div>
+    </div>
+    <div class="header-tags">
+      <span class="header-tag">男 · 37岁</span>
+      <span class="header-tag">本科 · 全日制</span>
+      <span class="header-tag">离职-周内到岗</span>
+      <span class="header-tag">现居上海</span>
+    </div>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-item"><span class="info-label">手机</span><span class="info-value">18066321599</span></div>
+    <div class="info-item"><span class="info-label">邮箱</span><span class="info-value">18066321599@163.com</span></div>
+    <div class="info-item"><span class="info-label">B站</span><span class="info-value"><a class="bili-link" href="https://space.bilibili.com/349234234" target="_blank">space.bilibili.com/349234234</a></span></div>
+    <div class="info-item"><span class="info-label">求职</span><span class="info-value">U3D · 上海/杭州 · 4万</span></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">个人优势</div>
+    <div class="highlight-box">
+      全栈程序员，做过服务器，独立开发 Unity 项目，创过业。后期专注技术美术，为美术效果开发 Unity 工具和解决方案。
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">作品集</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <a href="shader.html" class="cat-card" style="display:block;background:#f7fafc;border-radius:10px;padding:18px 16px;text-decoration:none;border:1px solid #edf2f7;transition:border-color .2s,background .2s">
+        <div style="font-weight:600;font-size:14px;color:#1a202c;margin-bottom:4px">图形渲染</div>
+        <div style="font-size:12px;color:#718096;line-height:1.5">卡渲 Shader · 渲染管线 · 后处理 · 场景特效</div>
+      </a>
+      <a href="framework.html" class="cat-card" style="display:block;background:#f7fafc;border-radius:10px;padding:18px 16px;text-decoration:none;border:1px solid #edf2f7;transition:border-color .2s,background .2s">
+        <div style="font-weight:600;font-size:14px;color:#1a202c;margin-bottom:4px">程序框架</div>
+        <div style="font-size:12px;color:#718096;line-height:1.5">Timeline 框架 · VR 客户端 · 渲染管线 · 工具套件</div>
+      </a>
+      <a href="tools.html" class="cat-card" style="display:block;background:#f7fafc;border-radius:10px;padding:18px 16px;text-decoration:none;border:1px solid #edf2f7;transition:border-color .2s,background .2s">
+        <div style="font-weight:600;font-size:14px;color:#1a202c;margin-bottom:4px">工具开发</div>
+        <div style="font-size:12px;color:#718096;line-height:1.5">地图编辑器 · 自动绑定 · 配表工具 · 编辑器扩展</div>
+      </a>
+      <a href="performance.html" class="cat-card" style="display:block;background:#f7fafc;border-radius:10px;padding:18px 16px;text-decoration:none;border:1px solid #edf2f7;transition:border-color .2s,background .2s">
+        <div style="font-weight:600;font-size:14px;color:#1a202c;margin-bottom:4px">性能优化</div>
+        <div style="font-size:12px;color:#718096;line-height:1.5">质量分级 · 带宽优化 · Spine 优化 · 移动端适配</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">工作经历</div>
+    <div class="job-list">
+
+      <div class="job">
+        <div class="job-date-col">2022.07<br>至今</div>
+        <div class="job-dot"></div>
+        <div class="job-content">
+          <div class="job-header"><span class="job-company">杭州游卡网络技术有限公司</span><span class="job-role">/ U3D</span></div>
+          <div class="job-subtitle">为技术美术中台定制了兼容多版本的标准化工具套件，并响应项目定制化需求参与多个项目开发</div>
+          <div style="margin-top:12px;display:flex;flex-direction:column;gap:12px">
+            <div><span style="font-weight:600;font-size:13px;color:#2b6cb0">已上线项目</span></div>
+            <div style="padding-left:16px;border-left:2px solid #e2e8f0">
+              <div style="margin-bottom:10px">
+                <div style="font-weight:600;font-size:14px">夺帅</div>
+                <div style="font-size:12px;color:#718096;margin-bottom:4px"><a href="https://www.taptap.cn/app/730185?os=android" target="_blank" style="color:#2b6cb0;text-decoration:none">TapTap 链接</a></div>
+                <ul class="job-desc" style="gap:2px">
+                  <li>制定场景渲染方案，搭建卡牌渲染管线，定制特效 Shader</li>
+                  <li>性能优化，质量分级</li>
+                </ul>
+              </div>
+              <div style="margin-bottom:10px">
+                <div style="font-weight:600;font-size:14px">指间山海</div>
+                <div style="font-size:12px;color:#718096;margin-bottom:4px"><a href="https://www.taptap.cn/app/735217?os=android" target="_blank" style="color:#2b6cb0;text-decoration:none">TapTap 链接</a></div>
+                <ul class="job-desc" style="gap:2px">
+                  <li>定制特效 / 场景 Shader</li>
+                  <li>SLG 玩法地图编辑器</li>
+                  <li>优化 Spine 性能</li>
+                </ul>
+              </div>
+              <div>
+                <div style="font-weight:600;font-size:14px">月相计划</div>
+                <div style="font-size:12px;color:#718096;margin-bottom:4px"><a href="https://www.taptap.cn/app/756067?os=android" target="_blank" style="color:#2b6cb0;text-decoration:none">TapTap 链接</a></div>
+                <ul class="job-desc" style="gap:2px">
+                  <li>高光烘焙材质，场景墨迹效果</li>
+                  <li>UI / 场景特效，角色卡渲 Shader</li>
+                </ul>
+              </div>
+            </div>
+            <div style="margin-top:4px"><span style="font-weight:600;font-size:13px;color:#718096">未上线项目</span></div>
+            <div style="display:flex;flex-wrap:wrap;gap:4px 12px;font-size:13px;color:#4a5568;padding-left:16px;border-left:2px solid #e2e8f0">
+              <span>写实西幻手游</span><span style="color:#cbd5e0">|</span>
+              <span>UE5 卡渲 PC MOBA</span><span style="color:#cbd5e0">|</span>
+              <span>HD2D 三国题材卡牌手游</span><span style="color:#cbd5e0">|</span>
+              <span>LowPoly 海岛玩法独游</span><span style="color:#cbd5e0">|</span>
+              <span>类 Dark War SLG</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-date-col">2020.09<br>2022.06</div>
+        <div class="job-dot"></div>
+        <div class="job-content">
+          <div class="job-header"><span class="job-company">上海哔哩哔哩文化传播有限公司（Bilibili）</span><span class="job-role">/ 客户端主程</span></div>
+          <div class="job-subtitle">VR 项目开发主程</div>
+          <ul class="job-desc">
+            <li>VR 客户端程序框架搭建</li>
+            <li>建立项目渲染管线，制定美术工作流程与技术方案，开发角色、场景、特效所需材质</li>
+            <li>性能优化，组件分离</li>
+            <li>与 PM 和制作人一起制定项目版本，参与相关迭代版本验收</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-date-col">2018.07<br>2020.09</div>
+        <div class="job-dot"></div>
+        <div class="job-content">
+          <div class="job-header"><span class="job-company">上海偶藻网络技术</span><span class="job-role">/ U3D</span></div>
+          <div class="job-subtitle">技术美术，提供游戏中美术效果的实现方案</div>
+          <ul class="job-desc">
+            <li>优化手游性能，为手机定制高性能的后处理套件</li>
+            <li>开发 Unity 编辑器扩展，提供自动绑定、配表工具等</li>
+            <li>材质 Shader，为美术特殊表现提供特殊材质支持</li>
+            <li>Timeline 剧情框架，包括后台配置编辑器、测试环境、运行环境等完整可扩展框架</li>
+            <li>AR 模块制作</li>
+          </ul>
+          <div style="margin-top:12px;display:flex;flex-direction:column;gap:10px">
+            <div><span style="font-weight:600;font-size:13px;color:#2b6cb0">已上线项目</span></div>
+            <div style="padding-left:16px;border-left:2px solid #e2e8f0">
+              <div style="font-weight:600;font-size:14px">七千兆亿的星空(宝石幻想 光芒重现)</div>
+              <div style="font-size:12px;color:#718096;margin-bottom:4px">KLab 合作 · 二次元 RPG</div>
+              <ul class="job-desc" style="gap:2px">
+                <li>渲染 / 工具开发 / 技术支持</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-date-col">2016.06<br>2018.07</div>
+        <div class="job-dot"></div>
+        <div class="job-content">
+          <div class="job-header"><span class="job-company">上海萌斯特科技有限公司</span><span class="job-role">/ U3D</span></div>
+          <div class="job-subtitle">技术方向全栈，公司业务主要为 APP 通过 AR 与实体产品结合</div>
+          <ul class="job-desc">
+            <li>后端服务器设计与实现</li>
+            <li>前端 Unity 手机 APP 实现，后期基本与美术一起独立设计独立制作</li>
+            <li>为第三方提供简单的 ASPX 网站搭建</li>
+            <li>设计并制作 VR 展馆 APP，亲自到实地参与布展</li>
+            <li>AR 实物结合</li>
+          </ul>
+          <div style="margin-top:12px;display:flex;flex-direction:column;gap:10px">
+            <div><span style="font-weight:600;font-size:13px;color:#2b6cb0">已上线项目</span></div>
+            <div style="padding-left:16px;border-left:2px solid #e2e8f0">
+              <div style="margin-bottom:10px">
+                <div style="font-weight:600;font-size:14px">熊猫小让农场奇遇</div>
+                <div style="font-size:12px;color:#718096;margin-bottom:4px">儿童教育 APP · AR 结合</div>
+                <ul class="job-desc" style="gap:2px">
+                  <li>实体玩具用 AR 技术与 APP 结合</li>
+                  <li>全栈</li>
+                </ul>
+              </div>
+              <div>
+                <div style="font-weight:600;font-size:14px">熊猫小让巧心思</div>
+                <div style="font-size:12px;color:#718096;margin-bottom:4px">儿童教育 APP · 折纸风格</div>
+                <ul class="job-desc" style="gap:2px">
+                  <li>折纸风格，实体玩具 AR 结合</li>
+                  <li>全栈</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-date-col">2014.08<br>2016.06</div>
+        <div class="job-dot"></div>
+        <div class="job-content">
+          <div class="job-header"><span class="job-company">上海序曲网络科技有限公司</span><span class="job-role">/ U3D</span></div>
+          <ul class="job-desc">
+            <li>与策划对接功能，设计并制作 U3D 前端实现</li>
+            <li>后期主要负责 U3D 引擎预研、技术拓展</li>
+            <li>前期主要维护项目服务端与功能扩展</li>
+            <li>后期研究新兴领域（AR/VR），提供材质渲染支持</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-date-col">2013.04<br>2014.08</div>
+        <div class="job-dot"></div>
+        <div class="job-content">
+          <div class="job-header"><span class="job-company">上海连游网络科技有限公司</span><span class="job-role">/ 游戏服务端开发工程师</span></div>
+          <ul class="job-desc">
+            <li>数据库管理和开发</li>
+            <li>服务端逻辑开发</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">教育经历</div>
+    <div class="edu-item">
+      <span class="edu-school">同济大学浙江学院</span>
+      <span class="edu-meta">本科（全日制）· 2008.09 – 2012.07</span>
+      <span class="edu-major">计算机科学与技术</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

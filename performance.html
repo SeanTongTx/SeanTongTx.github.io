@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>性能优化 - 童潇</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: rgb(244,244,244);
+    color: #2d3748;
+    line-height: 1.7;
+    padding: 0;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  .bg-back {
+    position: fixed;
+    top: 0; right: 0;
+    width: 40vw; height: 100vh;
+    background: url("https://i0.hdslb.com/bfs/openplatform/383b7fabb4ad3fee2b58ef94c7e082d6bedae80d.png@1e_1c.webp") center/contain no-repeat;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .container { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; padding: 48px 20px; }
+  .back { margin-bottom: 20px; }
+  .back a { color: #2b6cb0; text-decoration: none; font-size: 14px; font-weight: 500; }
+  .back a:hover { text-decoration: underline; }
+  .card {
+    background: #fff; border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,.06), 0 1px 4px rgba(0,0,0,.04);
+    padding: 48px 56px; margin-bottom: 40px;
+  }
+  h1 { font-size: 28px; font-weight: 700; letter-spacing: 1px; }
+  .subtitle { color: #718096; font-size: 14px; margin-top: 4px; }
+  .section-title {
+    font-size: 15px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; color: #2b6cb0;
+    display: flex; align-items: center; gap: 10px;
+    margin-top: 36px; margin-bottom: 20px;
+  }
+  .section-title:first-of-type { margin-top: 0; }
+  .section-title::after {
+    content: ""; flex: 1; height: 1px;
+    background: linear-gradient(to right, #e2e8f0, transparent);
+  }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .item {
+    background: #f7fafc; border-radius: 10px; padding: 20px;
+    border: 1px solid #edf2f7;
+  }
+  .item-preview {
+    width: 100%; aspect-ratio: 16/9; border-radius: 6px;
+    background: linear-gradient(135deg, #ebf4ff, #d6e4ff);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; color: #2b6cb0; font-weight: 500; margin-bottom: 14px;
+  }
+  .item-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
+  .item-tag {
+    display: inline-block; background: #edf2f7; color: #4a5568;
+    font-size: 11px; padding: 1px 10px; border-radius: 10px;
+  }
+  .item-title { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+  .item-desc { font-size: 13px; color: #718096; line-height: 1.6; }
+
+  @media (max-width: 768px) {
+    .card { padding: 28px 20px; }
+    .grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    body { padding: 16px 12px; }
+    .card { padding: 20px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="bg-back"></div>
+<div class="container">
+  <div class="back"><a href="index.html">&larr; 返回简历</a></div>
+  <div class="card">
+    <h1>性能优化</h1>
+    <div class="subtitle">质量分级 · 带宽优化 · Spine 优化 · 移动端适配</div>
+
+    <div class="section-title">渲染优化</div>
+    <div class="grid">
+      <div class="item">
+        <div class="item-preview">质量分级系统</div>
+        <div class="item-tags"><span class="item-tag">Quality</span><span class="item-tag">多平台</span></div>
+        <div class="item-title">质量分级系统</div>
+        <div class="item-desc">制定场景渲染方案与质量分级策略，支持多平台适配，平衡效果与性能</div>
+      </div>
+      <div class="item">
+        <div class="item-preview">带宽优化</div>
+        <div class="item-tags"><span class="item-tag">Bandwidth</span><span class="item-tag">移动端</span></div>
+        <div class="item-title">移动端带宽优化</div>
+        <div class="item-desc">渲染管线带宽优化，减少 Overdraw 与 Fill Rate，提升中低端设备帧率</div>
+      </div>
+    </div>
+
+    <div class="section-title">组件优化</div>
+    <div class="grid">
+      <div class="item">
+        <div class="item-preview">Spine 性能优化</div>
+        <div class="item-tags"><span class="item-tag">Spine</span><span class="item-tag">动画</span></div>
+        <div class="item-title">Spine 动画性能优化</div>
+        <div class="item-desc">优化 Spine 骨骼动画性能，减少 GC 与 CPU 开销，提升大量角色同屏表现</div>
+      </div>
+      <div class="item">
+        <div class="item-preview">组件分离</div>
+        <div class="item-tags"><span class="item-tag">Architecture</span><span class="item-tag">模块化</span></div>
+        <div class="item-title">组件分离与模块化</div>
+        <div class="item-desc">VR 项目组件分离设计，按需加载模块，减少初始内存占用与启动时间</div>
+      </div>
+    </div>
+
+    <div class="section-title">后处理优化</div>
+    <div class="grid">
+      <div class="item">
+        <div class="item-preview">移动端后处理</div>
+        <div class="item-tags"><span class="item-tag">Post-Processing</span><span class="item-tag">移动端</span></div>
+        <div class="item-title">移动端高性能后处理套件</div>
+        <div class="item-desc">为手机定制的高性能后处理管线，包含 Bloom、DOF、Color Grading 等，带宽优化</div>
+      </div>
+      <div class="item">
+        <div class="item-preview">设备适配</div>
+        <div class="item-tags"><span class="item-tag">Adaptation</span><span class="item-tag">中低端</span></div>
+        <div class="item-title">中低端设备适配</div>
+        <div class="item-desc">针对中低端设备的渲染方案适配，确保在有限硬件条件下保持可接受的视觉效果</div>
+      </div>
+    </div>
+  </div>
+  <div class="back" style="text-align:center"><a href="index.html">&larr; 返回简历</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>图形渲染 - 童潇</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: rgb(244,244,244);
+    color: #2d3748;
+    line-height: 1.7;
+    padding: 0;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  .bg-back {
+    position: fixed;
+    top: 0; right: 0;
+    width: 40vw; height: 100vh;
+    background: url("https://i0.hdslb.com/bfs/openplatform/383b7fabb4ad3fee2b58ef94c7e082d6bedae80d.png@1e_1c.webp") center/contain no-repeat;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .container { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; padding: 48px 20px; }
+  .back { margin-bottom: 20px; }
+  .back a { color: #2b6cb0; text-decoration: none; font-size: 14px; font-weight: 500; }
+  .back a:hover { text-decoration: underline; }
+  .card {
+    background: #fff; border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,.06), 0 1px 4px rgba(0,0,0,.04);
+    padding: 48px 56px; margin-bottom: 40px;
+  }
+  h1 { font-size: 28px; font-weight: 700; letter-spacing: 1px; }
+  .subtitle { color: #718096; font-size: 14px; margin-top: 4px; }
+  .section-title {
+    font-size: 15px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; color: #2b6cb0;
+    display: flex; align-items: center; gap: 10px;
+    margin-top: 36px; margin-bottom: 20px;
+  }
+  .section-title:first-of-type { margin-top: 0; }
+  .section-title::after {
+    content: ""; flex: 1; height: 1px;
+    background: linear-gradient(to right, #e2e8f0, transparent);
+  }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .item {
+    background: #f7fafc; border-radius: 10px; padding: 20px;
+    border: 1px solid #edf2f7;
+  }
+  .item-preview {
+    width: 100%; aspect-ratio: 16/9; border-radius: 6px;
+    background: linear-gradient(135deg, #ebf4ff, #d6e4ff);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; color: #2b6cb0; font-weight: 500; margin-bottom: 14px;
+  }
+  .item-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
+  .item-tag {
+    display: inline-block; background: #edf2f7; color: #4a5568;
+    font-size: 11px; padding: 1px 10px; border-radius: 10px;
+  }
+  .item-title { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+  .item-desc { font-size: 13px; color: #718096; line-height: 1.6; }
+
+  @media (max-width: 768px) {
+    .card { padding: 28px 20px; }
+    .grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    body { padding: 16px 12px; }
+    .card { padding: 20px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="bg-back"></div>
+<div class="container">
+  <div class="back"><a href="index.html">&larr; 返回简历</a></div>
+  <div class="card">
+    <h1>图形渲染</h1>
+    <div class="subtitle">卡渲 Shader · 渲染管线 · 后处理 · 场景特效</div>
+
+    <div class="section-title">渲染管线</div>
+    <div class="grid">
+      <div class="item">
+        <div class="item-preview">卡牌渲染管线</div>
+        <div class="item-tags"><span class="item-tag">Render Pipeline</span><span class="item-tag">URP</span></div>
+        <div class="item-title">卡牌渲染管线（夺帅）</div>
+        <div class="item-desc">基于 URP 搭建卡牌专用渲染管线，优化批次与带宽，支持多平台质量分级</div>
+      </div>
+      <div class="item">
+        <div class="item-preview">场景渲染方案</div>
+        <div class="item-tags"><span class="item-tag">Render Pipeline</span><span class="item-tag">场景</span></div>
+        <div class="item-title">场景渲染方案（夺帅）</div>
+        <div class="item-desc">制定场景光照与渲染方案，平衡效果与性能，适配中低端设备</div>
+      </div>
+    </div>
+
+    <div class="section-title">材质 Shader</div>
+    <div class="grid">
+      <div class="item">
+        <div class="item-preview">角色卡渲 Shader</div>
+        <div class="item-tags"><span class="item-tag">Shader</span><span class="item-tag">角色</span></div>
+        <div class="item-title">角色卡通渲染 Shader</div>
+        <div class="item-desc">多光源卡通渲染，支持 Ramp 色阶、描边、自阴影，用于月相计划等项目</div>
+      </div>
+      <div class="item">
+        <div class="item-preview">场景墨迹效果</div>
+        <div class="item-tags"><span class="item-tag">Shader</span><span class="item-tag">场景特效</span></div>
+        <div class="item-title">场景墨迹渲染效果</div>
+        <div class="item-desc">基于顶点动画与噪声纹理的动态墨迹风格效果，月相计划场景表现</div>
+      </div>
+      <div class="item">
+        <div class="item-preview">高光烘焙材质</div>
+        <div class="item-tags"><span class="item-tag">Shader</span><span class="item-tag">烘焙</span></div>
+        <div class="item-title">高光烘焙材质</div>
+        <div class="item-desc">将高光信息烘焙到光照贴图，在移动端实现接近 PBR 的质感表现</div>
+      </div>
+      <div class="item">
+        <div class="item-preview">场景特效 Shader</div>
+        <div class="item-tags"><span class="item-tag">Shader</span><span class="item-tag">场景</span></div>
+        <div class="item-title">场景特效 Shader 集</div>
+        <div class="item-desc">UV 动画、溶解、扭曲、流光等通用场景特效 Shader 库</div>
+      </div>
+    </div>
+
+    <div class="section-title">后处理</div>
+    <div class="grid">
+      <div class="item">
+        <div class="item-preview">移动端后处理</div>
+        <div class="item-tags"><span class="item-tag">Post-Processing</span><span class="item-tag">移动端</span></div>
+        <div class="item-title">移动端高性能后处理套件</div>
+        <div class="item-desc">为手机定制的高性能后处理管线，包含 Bloom、DOF、Color Grading 等，带宽优化</div>
+      </div>
+      <div class="item">
+        <div class="item-preview">特效 Shader 库</div>
+        <div class="item-tags"><span class="item-tag">Shader</span><span class="item-tag">VFX</span></div>
+        <div class="item-title">通用特效 Shader 库</div>
+        <div class="item-desc">多项目复用的特效 Shader 集合，支持溶解、扭曲、流光、爆炸等常见表现</div>
+      </div>
+    </div>
+  </div>
+  <div class="back" style="text-align:center"><a href="index.html">&larr; 返回简历</a></div>
+</div>
+</body>
+</html>
