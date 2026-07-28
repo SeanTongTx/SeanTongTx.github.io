@@ -1,0 +1,222 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+  background: rgb(244,244,244);
+  color: #2d3748;
+  line-height: 1.7;
+  padding: 0;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  overflow-x: hidden;
+}
+.bg-back {
+  position: fixed;
+  top: 0; right: 0;
+  width: 40vw; height: 100vh;
+  background: url("https://i0.hdslb.com/bfs/openplatform/383b7fabb4ad3fee2b58ef94c7e082d6bedae80d.png@1e_1c.webp") center/contain no-repeat;
+  pointer-events: none;
+  z-index: 0;
+}
+.container { position: relative; z-index: 1; }
+
+/* ========== 子页面通用 ========== */
+.back { margin-bottom: 20px; }
+.back a { color: #2b6cb0; text-decoration: none; font-size: 14px; font-weight: 500; }
+.back a:hover { text-decoration: underline; }
+
+.card {
+  background: #fff; border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,.06), 0 1px 4px rgba(0,0,0,.04);
+  padding: 48px 56px; margin-bottom: 40px;
+}
+
+h1 { font-size: 28px; font-weight: 700; letter-spacing: 1px; }
+.subtitle { color: #718096; font-size: 14px; margin-top: 4px; }
+
+.section-title {
+  font-size: 15px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; color: #2b6cb0;
+  display: flex; align-items: center; gap: 10px;
+  margin-top: 36px; margin-bottom: 20px;
+}
+.section-title:first-of-type { margin-top: 0; }
+.section-title::after {
+  content: ""; flex: 1; height: 1px;
+  background: linear-gradient(to right, #e2e8f0, transparent);
+}
+
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.item {
+  background: #f7fafc; border-radius: 10px; padding: 20px;
+  border: 1px solid #edf2f7;
+}
+.item-preview {
+  width: 100%; aspect-ratio: 16/9; border-radius: 6px;
+  background: linear-gradient(135deg, #ebf4ff, #d6e4ff);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; color: #2b6cb0; font-weight: 500; margin-bottom: 14px;
+}
+.item-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
+.item-tag {
+  display: inline-block; background: #edf2f7; color: #4a5568;
+  font-size: 11px; padding: 1px 10px; border-radius: 10px;
+}
+.item-title { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+.item-desc { font-size: 13px; color: #718096; line-height: 1.6; }
+
+/* ========== 主页 ========== */
+.container-main {
+  max-width: 920px; margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,.06), 0 1px 4px rgba(0,0,0,.04);
+  padding: 52px 60px;
+  margin-top: 48px; margin-bottom: 48px;
+  transition: box-shadow .3s;
+}
+.container-main:hover { box-shadow: 0 8px 40px rgba(0,0,0,.08), 0 2px 8px rgba(0,0,0,.04); }
+
+.header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px 24px; }
+.header-left { display: flex; align-items: center; gap: 16px; }
+.avatar { width: 60px; height: 60px; object-fit: cover; flex-shrink: 0; }
+.name { font-size: 28px; font-weight: 700; letter-spacing: 1px; line-height: 1.2; }
+.name-sub { font-size: 13px; color: #718096; margin-top: 2px; }
+.header-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.header-tag {
+  display: inline-block; background: #ebf4ff; color: #2b6cb0;
+  font-size: 12px; padding: 3px 12px; border-radius: 14px;
+  font-weight: 500; white-space: nowrap;
+}
+
+.info-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px 32px;
+  background: #f7fafc; border-radius: 10px; padding: 18px 24px;
+  margin-top: 24px;
+}
+.info-item { display: flex; align-items: center; gap: 6px; font-size: 14px; }
+.info-icon { width: 16px; text-align: center; color: #4a5568; flex-shrink: 0; }
+.info-label { color: #718096; }
+.info-value { color: #2d3748; font-weight: 500; }
+.bili-link { color: #2b6cb0; text-decoration: none; font-weight: 500; }
+.bili-link:hover { text-decoration: underline; color: #1a4f8b; }
+
+.section { margin-top: 36px; }
+.section .section-title { margin-top: 0; }
+
+.highlight-box {
+  background: linear-gradient(135deg, #f7fafc, #edf2f7);
+  border-radius: 10px; padding: 18px 24px;
+  font-size: 14px; color: #4a5568; line-height: 1.8;
+  border-left: 3px solid #2b6cb0;
+  margin-bottom: 4px;
+}
+
+.job-list { position: relative; }
+.job-list::before {
+  content: ""; position: absolute; left: 96px; top: 8px; bottom: 8px;
+  width: 1px; background: #e2e8f0;
+}
+.job { display: flex; gap: 20px; padding-bottom: 28px; position: relative; }
+.job:last-child { padding-bottom: 0; }
+.job-date-col {
+  width: 80px; flex-shrink: 0; text-align: right;
+  font-size: 12px; color: #a0aec0; font-weight: 500;
+  padding-top: 1px; line-height: 1.4; letter-spacing: .3px;
+}
+.job-dot {
+  position: absolute; left: 92px; top: 4px;
+  width: 9px; height: 9px; border-radius: 50%;
+  background: #2b6cb0; border: 2px solid #fff;
+  box-shadow: 0 0 0 1px #2b6cb0;
+  flex-shrink: 0;
+}
+.job-content { flex: 1; min-width: 0; }
+.job-header { margin-bottom: 2px; }
+.job-company { font-weight: 600; font-size: 15px; color: #1a202c; }
+.job-role { color: #4a5568; font-size: 14px; margin-left: 4px; }
+.job-subtitle { color: #718096; font-size: 13px; margin-bottom: 10px; }
+.job-desc {
+  margin: 0; padding: 0; list-style: none;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.job-desc li {
+  font-size: 14px; color: #4a5568; line-height: 1.6;
+  padding-left: 16px; position: relative;
+}
+.job-desc li::before {
+  content: ""; position: absolute; left: 2px; top: 10px;
+  width: 5px; height: 1px; background: #a0aec0;
+}
+
+.project {
+  display: flex; gap: 16px; padding: 14px 16px; margin-bottom: 6px;
+  border-radius: 8px; transition: background .2s;
+}
+.project:hover { background: #f7fafc; }
+.project-icon {
+  width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0;
+  background: linear-gradient(135deg, #ebf4ff, #d6e4ff);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 700; color: #2b6cb0; margin-top: 2px;
+}
+.project-body { flex: 1; min-width: 0; }
+.project-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; }
+.project-name { font-weight: 600; font-size: 14px; color: #1a202c; }
+.project-date { color: #a0aec0; font-size: 12px; white-space: nowrap; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.project-tag {
+  display: inline-block; background: #edf2f7; color: #4a5568;
+  font-size: 11px; padding: 1px 10px; border-radius: 10px;
+}
+.project-desc { margin-top: 6px; font-size: 13px; color: #718096; line-height: 1.5; }
+
+.portfolio-list { display: flex; flex-direction: column; gap: 14px; }
+.cat-card {
+  display: flex; flex-direction: column; justify-content: flex-end;
+  min-height: 120px;
+  position: relative; overflow: hidden;
+  border-radius: 10px; padding: 20px 22px;
+  text-decoration: none; border: 1px solid #edf2f7;
+  transition: border-color .2s, box-shadow .2s;
+}
+.cat-card-bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: 0.18;
+  transition: opacity .3s;
+}
+.cat-card:hover .cat-card-bg { opacity: 0.3; }
+.cat-card-text { position: relative; z-index: 1; }
+.cat-card:hover { border-color: #2b6cb0 !important; box-shadow: 0 2px 12px rgba(43,108,176,.12); }
+
+.edu-item {
+  display: flex; align-items: baseline; gap: 20px; padding: 14px 0;
+  flex-wrap: wrap;
+}
+.edu-school { font-weight: 600; font-size: 15px; color: #1a202c; }
+.edu-meta { color: #718096; font-size: 13px; }
+.edu-major { color: #4a5568; font-size: 14px; }
+
+/* ========== 响应式 ========== */
+@media (max-width: 768px) {
+  .card { padding: 28px 20px; }
+  .grid { grid-template-columns: 1fr; }
+  .container-main { padding: 28px 20px; }
+  .info-grid { grid-template-columns: 1fr; }
+  .job { gap: 12px; }
+  .job-date-col { width: 64px; font-size: 11px; }
+  .job-list::before { left: 78px; }
+  .job-dot { left: 74px; }
+}
+@media (max-width: 480px) {
+  body { padding: 16px 12px; }
+  .card { padding: 20px 16px; }
+  .container-main { padding: 20px 16px; margin-top: 24px; margin-bottom: 24px; }
+  .avatar { width: 48px; height: 48px; }
+  .name { font-size: 22px; }
+  .job { flex-direction: column; gap: 4px; }
+  .job-date-col { width: auto; text-align: left; }
+  .job-list::before, .job-dot { display: none; }
+  .info-grid { padding: 14px 16px; }
+}
