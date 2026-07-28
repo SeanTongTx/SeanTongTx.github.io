@@ -152,7 +152,7 @@ var sections = [
     files: [
       { name: "光照粒子.mp4", type: "video" },
       { name: "物理粒子.mp4", type: "video" },
-      { name: "移动端光照粒子.mp4", type: "video", src: "https://videofile.magesbox.com/30585052896771f18da15017f0f80102/0989a2657a5a4f078172b7a5b2662bea-542648415fd6ab9cd634d2b7568fa679-hd.mp4" },
+      { name: "移动端光照粒子.mp4", type: "video" },
       { name: "订制特效shader.mp4", type: "video" },
       { name: "光照粒子Shader.jpg", type: "img" },
       { name: "真机测试光照粒子.jpg", type: "img" },
@@ -203,9 +203,9 @@ var sections = [
     title: "InteractiveWorld",
     files: [
       { name: "可交互水面 卡渲1.mp4", type: "video" },
-      { name: "可交互水面 卡渲版.mp4", type: "video", src: "https://od.lk/s/MjRfNzM3NTEwODZf/%E5%8F%AF%E4%BA%A4%E4%BA%92%E6%B0%B4%E9%9D%A2%20%E5%8D%A1%E6%B8%B2%E7%89%88.mp4" },
+      { name: "可交互水面 卡渲版.mp4", type: "video" },
       { name: "水面交互.mp4", type: "video" },
-      { name: "水面交互1.mp4", type: "video", src: "https://videofile.magesbox.com/1073e0ff8a3771f1813a4531949c0102/ebcca1e3e5244082b9ba891541c216ee-2267753182ef4e574d79a2912c60b8ec-hd.mp4" }
+      { name: "水面交互1.mp4", type: "video" }
     ]
   },
   {
@@ -291,9 +291,7 @@ sections.forEach(function(sec) {
       if (f.type === "img") {
         thumb += '<img src="' + path + '" loading="lazy" onclick="openLightbox(this.src)" style="cursor:zoom-in">';
       } else {
-        var videoSrc = f.src || path;
-      var fallback = f.src ? ' data-fallback="' + path + '" onerror="if(this.src!==this.dataset.fallback){this.src=this.dataset.fallback}"' : '';
-      thumb += '<video src="' + videoSrc + '" preload="metadata" muted playsinline' + fallback + '></video>';
+        thumb += '<video src="' + path + '" preload="metadata" muted playsinline></video>';
         thumb += '<div class="play-overlay"><div class="play-icon"></div></div>';
       }
       thumb += '</div>';
@@ -374,19 +372,7 @@ document.querySelectorAll(".media-thumb video").forEach(function(v) {
   });
 });
 
-(function(){
-  var fallbackMap = {
-    "https://i0.hdslb.com/bfs/openplatform/383b7fabb4ad3fee2b58ef94c7e082d6bedae80d.png@1e_1c.webp": "Resources/back.png"
-  };
-  var bgSrc = getComputedStyle(document.querySelector(".bg-back")).backgroundImage.match(/url\("?([^"]+)"?\)/);
-  if(bgSrc && fallbackMap[bgSrc[1]]){
-    var bgImg = new Image();
-    bgImg.onerror = function(){
-      document.querySelector(".bg-back").style.backgroundImage = 'url(' + fallbackMap[bgSrc[1]] + ')';
-    };
-    bgImg.src = bgSrc[1];
-  }
-})();
+
 </script>
 </body>
 </html>

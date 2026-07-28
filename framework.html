@@ -562,19 +562,7 @@ document.querySelectorAll(".media-thumb video").forEach(function(v) {
   });
 });
 
-(function(){
-  var fallbackMap = {
-    "https://i0.hdslb.com/bfs/openplatform/383b7fabb4ad3fee2b58ef94c7e082d6bedae80d.png@1e_1c.webp": "Resources/back.png"
-  };
-  var bgSrc = getComputedStyle(document.querySelector(".bg-back")).backgroundImage.match(/url\("?([^"]+)"?\)/);
-  if(bgSrc && fallbackMap[bgSrc[1]]){
-    var bgImg = new Image();
-    bgImg.onerror = function(){
-      document.querySelector(".bg-back").style.backgroundImage = 'url(' + fallbackMap[bgSrc[1]] + ')';
-    };
-    bgImg.src = bgSrc[1];
-  }
-})();
+
 </script>
 </body>
 </html>
