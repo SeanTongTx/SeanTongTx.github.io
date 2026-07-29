@@ -14,7 +14,7 @@ body {
   position: fixed;
   top: 0; right: 0;
   width: 40vw; height: 100vh;
-  background: url("Resources/back.png") center/contain no-repeat;
+  background: url("back.png") center/contain no-repeat;
   pointer-events: none;
   z-index: 0;
 }

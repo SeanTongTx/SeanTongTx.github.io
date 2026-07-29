@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>图形渲染 - 童潇</title>
 <link rel="stylesheet" href="Resources/style.css">
+<script src="Resources/media-fallback.js"></script>
 <style>
 .masonry { column-count: 2; column-gap: 14px; }
 @media (max-width: 600px) { .masonry { column-count: 1; } }
@@ -126,11 +127,11 @@ var sections = [
       { name: "AHD场景光照1.mp4", type: "video" },
       { name: "地编.mp4", type: "video" },
       { name: "日夜变化 初版效果.mp4", type: "video" },
-      { name: "原始烘焙.png", type: "img", pair: true },
-      { name: "AHDLighting烘焙后.png", type: "img", pair: true },
-      { name: "场景渲染.jpg", type: "img" },
-      { name: "AHD场景光照.jpg", type: "img" },
-      { name: "-1943606612136644608_121.jpg", type: "img" }
+      { name: "原始烘焙.png", type: "img", pair: true, cdn: "https://bee-reg-ab.imagency.cn/p/4e65ee631d8a653091041aaec4e6a620.png" },
+      { name: "AHDLighting烘焙后.png", type: "img", pair: true, cdn: "https://bee-reg-ab.imagency.cn/p/0ea0ecf6df48cd4dbd851e3667d17023.png" },
+      { name: "场景渲染.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/5051be41f021a8c954f61f0edc003110.jpg" },
+      { name: "AHD场景光照.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/ed3f75efbc7279cba275ed14d1c4e3c1.jpg" },
+      { name: "-1943606612136644608_121.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/093e7e85e569bd885d55f4f5bb9e2a7d.jpg" }
     ]
   },
   {
@@ -140,11 +141,11 @@ var sections = [
       { name: "地形材质细节.mp4", type: "video" },
       { name: "LOD边界缝合.gif", type: "img", pair: true },
       { name: "LOD边界缝合1.gif", type: "img", pair: true },
-      { name: "地形ID图权重图生成.jpg", type: "img" },
-      { name: "地形混合.jpg", type: "img" },
-      { name: "地形混合效果.jpg", type: "img" },
-      { name: "使用2dArray.png", type: "img" },
-      { name: "原始vs地形Mesh.png", type: "img" }
+      { name: "地形ID图权重图生成.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/2dae44d524f87a6aca437e2918b3b203.jpg" },
+      { name: "地形混合.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/b5d0dd213aa2bcdc2efa9c4c22db68e8.jpg" },
+      { name: "地形混合效果.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/8cce58f6304a7f0319b7ecb0e5af5942.jpg" },
+      { name: "使用2dArray.png", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/cdbe9f6a25d60c50ae2384be400d7c03.png" },
+      { name: "原始vs地形Mesh.png", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/7de66201504ab2fdbda03290e61148b0.png" }
     ]
   },
   {
@@ -152,32 +153,33 @@ var sections = [
     files: [
       { name: "光照粒子.mp4", type: "video" },
       { name: "物理粒子.mp4", type: "video" },
-      { name: "移动端光照粒子.mp4", type: "video", src: "https://videofile.magesbox.com/30585052896771f18da15017f0f80102/0989a2657a5a4f078172b7a5b2662bea-542648415fd6ab9cd634d2b7568fa679-hd.mp4" },
+      { name: "移动端光照粒子.mp4", type: "video", cdn: "https://videofile.magesbox.com/30585052896771f18da15017f0f80102/0989a2657a5a4f078172b7a5b2662bea-542648415fd6ab9cd634d2b7568fa679-hd.mp4" },
       { name: "订制特效shader.mp4", type: "video" },
-      { name: "光照粒子Shader.jpg", type: "img" },
+      { name: "光照粒子Shader.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/ae21b754c9e1242ddff4a91d6ecaddbd.jpg" },
       { name: "真机测试光照粒子.jpg", type: "img" },
-      { name: "通用粒子Shader.jpg", type: "img" },
-      { name: "订制特效shader.jpg", type: "img" }
+      { name: "通用粒子Shader.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/8901ae86c1f170b36285a9b7c96fa692.jpg" },
+      { name: "订制特效shader.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/069561c06f15eab17bc7c9ed0db14b09.jpg" }
     ]
   },
   {
     title: "贴花",
     files: [
-      { name: "Shader贴花.jpg", type: "img" },
+      { name: "Shader贴花.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/71c4db7f2c5620a0753a83667f1cb03f.jpg" },
       { name: "Shader贴花1.gif", type: "img" },
-      { name: "Mesh贴花.jpg", type: "img" }
+      { name: "Mesh贴花.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/b2915b16583b7747dc438ff952aac478.jpg" }
     ]
   },
   {
     title: "渲染管线增强",
     files: [
       { name: "屏幕空间体积雾.mp4", type: "video" },
-      { name: "MGbuffer_Raw.jpg", type: "img", pair: true },
-      { name: "MGbuffer_albedo.jpg", type: "img", pair: true },
-      { name: "MGbuffer_Nor.jpg", type: "img", pair: true },
-      { name: "MGbuffer_ms.jpg", type: "img", pair: true },
-      { name: "后处理扩展feature.jpg", type: "img" },
-      { name: "通用feature.jpg", type: "img" }
+      { name: "MGbuffer_Raw.jpg", type: "img", pair: true, cdn: "https://bee-reg-ab.imagency.cn/p/e9037ee7ad06d9bf7504bbd2ce7ef691.jpg" },
+      { name: "MGbuffer_albedo.jpg", type: "img", pair: true, cdn: "https://bee-reg-ab.imagency.cn/p/6529f5293fe638317d44e4a8a9f792b7.jpg" },
+      { name: "MGbuffer_Nor.jpg", type: "img", pair: true, cdn: "https://bee-reg-ab.imagency.cn/p/da089901064cdc95b99f30e1d343e0c3.jpg" },
+      { name: "MGbuffer_ms.jpg", type: "img", pair: true, cdn: "https://bee-reg-ab.imagency.cn/p/034d89da8da1c0d40bb2dde03a272000.jpg" },
+      { name: "后处理扩展feature.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/34da91839f0a5f44eb4d60431e4c45e7.jpg" },
+      { name: "通用feature.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/31551af0a3a5a117bd260b8401568381.jpg" },
+      { name: "后处理SPEs1.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/69e2d9c7cfd59187a0dc44f653fa9b1b.jpg" }
     ]
   },
   {
@@ -185,18 +187,18 @@ var sections = [
     files: [
       { name: "卡牌图集Sample.mp4", type: "video" },
       { name: "卡牌图集接口.mp4", type: "video" },
-      { name: "卡牌图集渲染流程.jpg", type: "img" },
-      { name: "卡牌图集真机.jpg", type: "img" }
+      { name: "卡牌图集渲染流程.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/eb06dd047f01f25a038bdd8aef932331.jpg" },
+      { name: "卡牌图集真机.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/cca74366e3522f4152691b5d15bb7c96.jpg" }
     ]
   },
   {
     title: "HD2D",
     files: [
-      { name: "hd2d.mp4", type: "video" },
-      { name: "2DLitMask.mp4", type: "video" },
-      { name: "ShadowDistance.mp4", type: "video" },
-      { name: "SSPR.mp4", type: "video" },
-      { name: "SpineMaskRenderPass.mp4", type: "video" }
+      { name: "hd2d.mp4", type: "video", cdn: "https://seantong-resume.oss-cn-shanghai.aliyuncs.com/HD2D/hd2d.mp4" },
+      { name: "2DLitMask.mp4", type: "video", cdn: "https://seantong-resume.oss-cn-shanghai.aliyuncs.com/HD2D/2DLitMask.mp4" },
+      { name: "ShadowDistance.mp4", type: "video", cdn: "https://seantong-resume.oss-cn-shanghai.aliyuncs.com/HD2D/ShadowDistance.mp4" },
+      { name: "SSPR.mp4", type: "video", cdn: "https://seantong-resume.oss-cn-shanghai.aliyuncs.com/HD2D/SSPR.mp4" },
+      { name: "SpineMaskRenderPass.mp4", type: "video", cdn: "https://seantong-resume.oss-cn-shanghai.aliyuncs.com/HD2D/SpineMaskRenderPass.mp4" }
     ]
   },
   {
@@ -205,7 +207,7 @@ var sections = [
       { name: "可交互水面 卡渲1.mp4", type: "video" },
       { name: "可交互水面 卡渲版.mp4", type: "video" },
       { name: "水面交互.mp4", type: "video" },
-      { name: "水面交互1.mp4", type: "video", src: "https://videofile.magesbox.com/1073e0ff8a3771f1813a4531949c0102/ebcca1e3e5244082b9ba891541c216ee-2267753182ef4e574d79a2912c60b8ec-hd.mp4" }
+      { name: "水面交互1.mp4", type: "video", cdn: "https://videofile.magesbox.com/1073e0ff8a3771f1813a4531949c0102/ebcca1e3e5244082b9ba891541c216ee-2267753182ef4e574d79a2912c60b8ec-hd.mp4" }
     ]
   },
   {
@@ -216,11 +218,14 @@ var sections = [
       { name: "HairShader.mp4", type: "video" },
       { name: "PBR优化矿石1.mp4", type: "video" },
       { name: "SSS.mp4", type: "video" },
-      { name: "PBR优化矿石.jpg", type: "img" },
-      { name: "PBR优化散色.jpg", type: "img" },
-      { name: "PBR优化散色透射.jpg", type: "img" },
-      { name: "PBR优化算法.jpg", type: "img" },
-      { name: "photo_2026-07-22_14-16-54.jpg", type: "img" }
+      { name: "PBR优化矿石.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/daf0809910b81e9879e1c9c2a0400460.jpg" },
+      { name: "PBR优化散色.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/510519fde6cb715694762ec29c489f99.jpg" },
+      { name: "PBR优化散色透射.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/31e16ce826a8c2f0202a25b7a7ceb10c.jpg" },
+      { name: "PBR优化算法.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/b477c553021d81202425598b0bcc94e8.jpg" },
+      { name: "1a42867b95f0.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/fb5c4eb23ac00c2f7b42b456afee4172.jpg" },
+      { name: "SSS1.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/b7b89c687d271dfc04626cc2300e45c3.jpg" },
+      { name: "SSS2.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/47bae5e64dee8a0dae8048664efaf976.jpg" },
+      { name: "SSS3.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/3945d3f03b579b760730676618f67257.jpg" }
     ]
   },
   {
@@ -230,7 +235,7 @@ var sections = [
       { name: "场景材质效果.mp4", type: "video" },
       { name: "技能特效蓝图.mp4", type: "video" },
       { name: "特效材质.mp4", type: "video" },
-      { name: "UE5角色卡通渲染.jpg", type: "img" }
+      { name: "UE5角色卡通渲染.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/4745455fbe17256fb54175552ff00d57.jpg" }
     ]
   }
 ];
@@ -280,7 +285,8 @@ sections.forEach(function(sec) {
         var ppath = base + (dirName ? dirName + "/" : "") + pf.name;
         var pitem = document.createElement("div");
         pitem.className = "media-item";
-        pitem.innerHTML = '<div class="media-thumb"><img src="' + ppath + '" loading="lazy" onclick="openLightbox(this.src)" style="cursor:zoom-in"></div><div class="media-caption">' + (pf.caption || pf.name) + '</div>';
+        var pimgSrc = pf.cdn || ppath;
+        pitem.innerHTML = '<div class="media-thumb"><img src="' + pimgSrc + '" loading="lazy" onclick="openLightbox(this.src)" style="cursor:zoom-in"' + (pf.cdn ? ' data-fallback="' + ppath + '"' : '') + '></div><div class="media-caption">' + (pf.caption || pf.name) + '</div>';
         pairDiv.appendChild(pitem);
       }
       grid.appendChild(pairDiv);
@@ -289,11 +295,9 @@ sections.forEach(function(sec) {
       var item = document.createElement("div");
       var thumb = '<div class="media-thumb">';
       if (f.type === "img") {
-        thumb += '<img src="' + path + '" loading="lazy" onclick="openLightbox(this.src)" style="cursor:zoom-in">';
+        thumb += '<img src="' + (f.cdn || path) + '" loading="lazy" onclick="openLightbox(this.src)" style="cursor:zoom-in"' + (f.cdn ? ' data-fallback="' + path + '"' : '') + '>';
       } else {
-        var videoSrc = f.src || path;
-      var fallback = f.src ? ' data-fallback="' + path + '" onerror="if(this.src!==this.dataset.fallback){this.src=this.dataset.fallback}"' : '';
-      thumb += '<video src="' + videoSrc + '" preload="metadata" muted playsinline' + fallback + '></video>';
+        thumb += '<video src="' + (f.cdn || path) + '" preload="metadata" muted playsinline' + (f.cdn ? ' data-fallback="' + path + '"' : '') + '></video>';
         thumb += '<div class="play-overlay"><div class="play-icon"></div></div>';
       }
       thumb += '</div>';
@@ -374,19 +378,6 @@ document.querySelectorAll(".media-thumb video").forEach(function(v) {
   });
 });
 
-(function(){
-  var fallbackMap = {
-    "https://i0.hdslb.com/bfs/openplatform/383b7fabb4ad3fee2b58ef94c7e082d6bedae80d.png@1e_1c.webp": "Resources/back.png"
-  };
-  var bgSrc = getComputedStyle(document.querySelector(".bg-back")).backgroundImage.match(/url\("?([^"]+)"?\)/);
-  if(bgSrc && fallbackMap[bgSrc[1]]){
-    var bgImg = new Image();
-    bgImg.onerror = function(){
-      document.querySelector(".bg-back").style.backgroundImage = 'url(' + fallbackMap[bgSrc[1]] + ')';
-    };
-    bgImg.src = bgSrc[1];
-  }
-})();
 </script>
 </body>
 </html>

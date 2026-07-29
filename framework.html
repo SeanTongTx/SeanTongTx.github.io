@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>程序工具 - 童潇</title>
 <link rel="stylesheet" href="Resources/style.css">
+<script src="Resources/media-fallback.js"></script>
 <style>
 .masonry { display: flex; flex-direction: column; gap: 14px; }
 
@@ -250,8 +251,8 @@ var sections = [
     desc: "提供完整的角色控制解决方案，包括 IK 反向动力学、KCC 角色控制器和换装系统。",
     base: "Resources/程序工具/角色系统/",
     files: [
-      { name: "角色换装系统.jpg", type: "img" },
-      { name: "IKSystem.jpg", type: "img" },
+      { name: "角色换装系统.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/0e652f4ea44b2c761190e9dc30c96ac6.jpg" },
+      { name: "IKSystem.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/1fa4072706c03ac01fce48170945adbd.jpg" },
       { name: "IKGoalSolver.mp4", type: "video" },
       { name: "KCC.mp4", type: "video" }
     ]
@@ -261,11 +262,11 @@ var sections = [
     desc: "场景编辑工具集，支持多场景管理、GPU Instancing 批量渲染、运行时程序化模型生成和 Prefab 内嵌资源。",
     base: "Resources/程序工具/WorldBuilder/",
     files: [
-      { name: "WorldBuilder.jpg", type: "img" },
-      { name: "GPUInstanceRenderer.png", type: "img" },
-      { name: "多场景工具.jpg", type: "img", caption: "多场景工具 <a href='https://www.bilibili.com/video/BV1r64y1d7Ty/?spm_id_from=333.1387.homepage.video_card.click' target='_blank' style='color:#2b6cb0'>B站视频</a>" },
+      { name: "WorldBuilder.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/3c88ca6244ff3a4f351b420c887657c8.jpg" },
+      { name: "GPUInstanceRenderer.png", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/0f4972e493d7dd1644941091598e6474.png" },
+      { name: "多场景工具.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/571c7f480be53daa504eeeeca61297f3.jpg", caption: "多场景工具 <a href='https://www.bilibili.com/video/BV1r64y1d7Ty/?spm_id_from=333.1387.homepage.video_card.click' target='_blank' style='color:#2b6cb0'>B站视频</a>" },
       { name: "运行时程序化模型生成.mp4", type: "video" },
-      { name: "prefab内嵌资源.jpg", type: "img" }
+      { name: "prefab内嵌资源.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/0a3c0a27bc41d4b101dd8c9deadf96e1.jpg" }
     ]
   },
   {
@@ -273,10 +274,10 @@ var sections = [
     desc: "可视化 Shader 设计器，通过节点编辑器快速生成 Shader 代码，支持自定义框架扩展。",
     base: "Resources/程序工具/Shader生成/",
     files: [
-      { name: "通用Shader框架.jpg", type: "img" },
-      { name: "ShaderDesigner.jpg", type: "img" },
-      { name: "ShaderDesigner1.jpg", type: "img" },
-      { name: "PBRShader优化版.jpg", type: "img" }
+      { name: "通用Shader框架.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/27e921e65742f9c2303f36c2288fd2c8.jpg" },
+      { name: "ShaderDesigner.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/573d4bea7e576640f4440f1237b1040a.jpg" },
+      { name: "ShaderDesigner1.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/43c1783b7ac2e1bb2fd2ebc0bd74f99b.jpg" },
+      { name: "PBRShader优化版.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/d0af5981fd73461184e16ca1c4db0510.jpg" }
     ]
   },
   {
@@ -284,10 +285,10 @@ var sections = [
     desc: "Shader 变体裁剪工具，自动分析并移除未使用的 Shader 变体，减小包体体积。",
     base: "Resources/程序工具/Shader优化/",
     files: [
-      { name: "Shader优化 变体裁剪.jpg", type: "img" },
-      { name: "Shader优化 变体裁剪1.jpg", type: "img" },
-      { name: "shader指令分析.jpg", type: "img" },
-      { name: "shader指令分析1.jpg", type: "img" }
+      { name: "Shader优化 变体裁剪.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/792cfd439e9a2717bcb06b80d73ba82f.jpg" },
+      { name: "Shader优化 变体裁剪1.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/df04078ae3d39bfe80f464f75ed7bb26.jpg" },
+      { name: "shader指令分析.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/bcf6d12c2f1f2acab84aded83cc71da2.jpg" },
+      { name: "shader指令分析1.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/50249dcfee8f41ba942ccadf20e30b4b.jpg" }
     ]
   },
   {
@@ -295,8 +296,8 @@ var sections = [
     desc: "六边形网格生成与编辑工具，支持地形渲染和策略游戏地图编辑。",
     base: "Resources/程序工具/SLG网格系统/",
     files: [
-      { name: "六边形网格.jpg", type: "img" },
-      { name: "效果图.jpg", type: "img" },
+      { name: "六边形网格.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/b2f7ad85572b639db0dc4e88f1c61c59.jpg" },
+      { name: "效果图.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/566c3d2dfbb104eea20c6ff2ef460bad.jpg" },
       { name: "场景网格编辑器.mp4", type: "video" }
     ]
   },
@@ -305,13 +306,13 @@ var sections = [
     desc: "Spine 动画性能优化方案，包括 Mask 图同步工具、性能瓶颈分析和优化前后对比。",
     base: "Resources/程序工具/Spine优化/",
     files: [
-      { name: "Spine Mask图同步工具.jpg", type: "img" },
+      { name: "Spine Mask图同步工具.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/9d7a4fec66dd85cf43bdb194108ff828.jpg" },
       { name: "Spine平面投影.mp4", type: "video" },
-      { name: "Spine性能瓶颈.png", type: "img" },
-      { name: "Spine性能瓶颈1.png", type: "img" },
-      { name: "Spine优化前.png", type: "img" },
-      { name: "Spine优化后.png", type: "img" },
-      { name: "5a1b2c98e74d.png", type: "img" },
+      { name: "Spine性能瓶颈.png", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/d4c36ee6c0647023256ccfc5b69904da.png" },
+      { name: "Spine性能瓶颈1.png", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/8fc72c00b4999cd28eb70689a32c0a4a.png" },
+      { name: "Spine优化前.png", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/718a3801d94a004d49e1602be8abc4bd.png" },
+      { name: "Spine优化后.png", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/f3d33de72bef8015b48cc512437ea359.png" },
+      { name: "5a1b2c98e74d.png", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/aed84328278c309cdc08116a0463d12b.png" },
       { name: "56a2c017bd8f.png", type: "img" }
     ]
   },
@@ -321,8 +322,8 @@ var sections = [
     base: "Resources/程序工具/贴图生成/",
     files: [
       { name: "基于节点的贴图生成.jpg", type: "img" },
-      { name: "贴图批量生成.jpg", type: "img" },
-      { name: "贴图生成器.jpg", type: "img" }
+      { name: "贴图批量生成.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/76ae73233e144662ac264f7ba9e45f68.jpg" },
+      { name: "贴图生成器.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/e647bd916d940c1d4555c59ca6b28867.jpg" }
     ]
   },
   {
@@ -330,9 +331,9 @@ var sections = [
     desc: "模型平滑法线生成与导入工具，用于改善法线外描边效果。",
     base: "Resources/程序工具/平滑法线生成工具/",
     files: [
-      { name: "内嵌入模型导入器.jpg", type: "img" },
-      { name: "前.jpg", type: "img" },
-      { name: "后.jpg", type: "img" }
+      { name: "内嵌入模型导入器.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/d30e19ac7a47e2ec6f1ca65961204bf0.jpg" },
+      { name: "前.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/51515889e5d55da2816645b704c8bce7.jpg" },
+      { name: "后.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/55ae52998b5467bcee413cbc367c614b.jpg" }
     ]
   },
   {
@@ -340,15 +341,15 @@ var sections = [
     desc: "UGUI 增强工具，包括 SDF 文字渲染、阴影效果、Visual Script 适配和组件优化。",
     base: "Resources/程序工具/UGUI/",
     files: [
-      { name: "SDFUI.png", type: "img" },
-      { name: "SDF生成.png", type: "img" },
-      { name: "SDF生成1.png", type: "img" },
-      { name: "SDF生成2.png", type: "img" },
+      { name: "SDFUI.png", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/48e3c32aa55184877aa7d5a720279c35.png" },
+      { name: "SDF生成.png", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/0036c23c609bf6503fb89af791a9e754.png" },
+      { name: "SDF生成1.png", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/b6a4070828907a481d8792adccd8de36.png" },
+      { name: "SDF生成2.png", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/4e663fd2485f3052c2b64cba3275eec6.png" },
       { name: "UGUIShadow.mp4", type: "video" },
       { name: "VisualScript适配.mp4", type: "video" },
-      { name: "优化UGUI组件.jpg", type: "img" },
-      { name: "图片1.png", type: "img" },
-      { name: "图片2.png", type: "img" }
+      { name: "优化UGUI组件.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/c9d6976778a41682923c4b07f956221b.jpg" },
+      { name: "图片1.png", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/c61ebd163e5ae0031fc867a9264947ea.png" },
+      { name: "图片2.png", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/ecdd2614b13a41ede8507dd7ce35afc5.png" }
     ]
   },
   {
@@ -365,11 +366,11 @@ var sections = [
     desc: "Unity 内 Markdown 渲染支持，可在编辑器窗口、组件和图表中嵌入 Markdown 文档。",
     base: "Resources/程序工具/UnityMarkdown/",
     files: [
-      { name: "嵌入编辑器窗口.jpg", type: "img" },
-      { name: "嵌入图表中.jpg", type: "img" },
-      { name: "嵌入组件.png", type: "img" },
-      { name: "文本预览.png", type: "img" },
-      { name: "文档中心.png", type: "img" }
+      { name: "嵌入编辑器窗口.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/5cbe78fa324f83ec2f754bd57e2012de.jpg" },
+      { name: "嵌入图表中.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/795148195aef22c0ed48a5592429e2ed.jpg" },
+      { name: "嵌入组件.png", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/f3adbb5d982d24f148fc2955a3baa4a8.png" },
+      { name: "文本预览.png", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/9514614dfa4d65bf054fa1c5d35000bd.png" },
+      { name: "文档中心.png", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/8f838f147e675a5417435d6bca5c6b05.png" }
     ]
   },
   {
@@ -377,10 +378,10 @@ var sections = [
     desc: "编辑器功能扩展、Timeline 剧情框架、网络协议层和 Blender 插件等辅助工具。",
     base: "Resources/程序工具/其他工具/",
     files: [
-      { name: "编辑器功能扩展.jpg", type: "img" },
-      { name: "Timeline扩展.png", type: "img" },
-      { name: "Protocol.jpg", type: "img" },
-      { name: "BlenderPlugins.png", type: "img" }
+      { name: "编辑器功能扩展.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/d37420c7586892608eaaa9600ca16171.jpg" },
+      { name: "Timeline扩展.png", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/9e10bd37f6e678c98b18d50a0b635af5.png" },
+      { name: "Protocol.jpg", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/6e169794ad2df6da28d7be31d29505c8.jpg" },
+      { name: "BlenderPlugins.png", type: "img", cdn: "https://bee-reg-ab.imagency.cn/p/ad13b705e5b39e713dc77f1ea4d4eb12.png" }
     ]
   }
 ];
@@ -483,9 +484,9 @@ sections.forEach(function(sec) {
       var item = document.createElement("div");
       var thumb = '<div class="media-thumb">';
       if (f.type === "img") {
-        thumb += '<img src="' + path + '" loading="lazy" onclick="openLightbox(this.src)" style="cursor:zoom-in">';
+        thumb += '<img src="' + (f.cdn || path) + '" loading="lazy" onclick="openLightbox(this.src)" style="cursor:zoom-in"' + (f.cdn ? ' data-fallback="' + path + '"' : '') + '>';
       } else {
-        thumb += '<video src="' + path + '" preload="metadata" muted playsinline></video>';
+        thumb += '<video src="' + (f.cdn || path) + '" preload="metadata" muted playsinline' + (f.cdn ? ' data-fallback="' + path + '"' : '') + '></video>';
         thumb += '<div class="play-overlay"><div class="play-icon"></div></div>';
       }
       thumb += '</div>';
