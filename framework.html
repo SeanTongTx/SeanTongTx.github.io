@@ -386,6 +386,7 @@ var sections = [
   }
 ];
 
+var cdnBase = "https://seantong-resume.oss-cn-shanghai.aliyuncs.com/";
 var base = "Resources/程序工具/";
 var container = document.getElementById("sections");
 
@@ -484,9 +485,9 @@ sections.forEach(function(sec) {
       var item = document.createElement("div");
       var thumb = '<div class="media-thumb">';
       if (f.type === "img") {
-        thumb += '<img src="' + (f.cdn || path) + '" loading="lazy" onclick="openLightbox(this.src)" style="cursor:zoom-in"' + (f.cdn ? ' data-fallback="' + path + '"' : '') + '>';
+        thumb += '<img src="' + (f.cdn || cdnBase + encodeURIComponent(path.replace("Resources/",""))) + '" loading="lazy" onclick="openLightbox(this.src)" style="cursor:zoom-in" data-fallback="' + path + '">';
       } else {
-        thumb += '<video src="' + (f.cdn || path) + '" preload="metadata" muted playsinline' + (f.cdn ? ' data-fallback="' + path + '"' : '') + '></video>';
+        thumb += '<video src="' + (f.cdn || cdnBase + encodeURIComponent(path.replace("Resources/",""))) + '" preload="metadata" muted playsinline data-fallback="' + path + '"></video>';
         thumb += '<div class="play-overlay"><div class="play-icon"></div></div>';
       }
       thumb += '</div>';

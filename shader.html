@@ -194,11 +194,11 @@ var sections = [
   {
     title: "HD2D",
     files: [
-      { name: "hd2d.mp4", type: "video", cdn: "https://seantong-resume.oss-cn-shanghai.aliyuncs.com/HD2D/hd2d.mp4" },
-      { name: "2DLitMask.mp4", type: "video", cdn: "https://seantong-resume.oss-cn-shanghai.aliyuncs.com/HD2D/2DLitMask.mp4" },
-      { name: "ShadowDistance.mp4", type: "video", cdn: "https://seantong-resume.oss-cn-shanghai.aliyuncs.com/HD2D/ShadowDistance.mp4" },
-      { name: "SSPR.mp4", type: "video", cdn: "https://seantong-resume.oss-cn-shanghai.aliyuncs.com/HD2D/SSPR.mp4" },
-      { name: "SpineMaskRenderPass.mp4", type: "video", cdn: "https://seantong-resume.oss-cn-shanghai.aliyuncs.com/HD2D/SpineMaskRenderPass.mp4" }
+      { name: "hd2d.mp4", type: "video" },
+      { name: "2DLitMask.mp4", type: "video" },
+      { name: "ShadowDistance.mp4", type: "video" },
+      { name: "SSPR.mp4", type: "video" },
+      { name: "SpineMaskRenderPass.mp4", type: "video" }
     ]
   },
   {
@@ -240,6 +240,7 @@ var sections = [
   }
 ];
 
+var cdnBase = "https://seantong-resume.oss-cn-shanghai.aliyuncs.com/";
 var base = "Resources/图形渲染/";
 var dirMap = {
   "场景渲染（AHD Lighting）": "场景渲染(AHDLighting)",
@@ -285,8 +286,8 @@ sections.forEach(function(sec) {
         var ppath = base + (dirName ? dirName + "/" : "") + pf.name;
         var pitem = document.createElement("div");
         pitem.className = "media-item";
-        var pimgSrc = pf.cdn || ppath;
-        pitem.innerHTML = '<div class="media-thumb"><img src="' + pimgSrc + '" loading="lazy" onclick="openLightbox(this.src)" style="cursor:zoom-in"' + (pf.cdn ? ' data-fallback="' + ppath + '"' : '') + '></div><div class="media-caption">' + (pf.caption || pf.name) + '</div>';
+        var pcdn = pf.cdn || cdnBase + encodeURIComponent(ppath.replace("Resources/",""));
+        pitem.innerHTML = '<div class="media-thumb"><img src="' + pcdn + '" loading="lazy" onclick="openLightbox(this.src)" style="cursor:zoom-in" data-fallback="' + ppath + '"></div><div class="media-caption">' + (pf.caption || pf.name) + '</div>';
         pairDiv.appendChild(pitem);
       }
       grid.appendChild(pairDiv);
@@ -295,9 +296,9 @@ sections.forEach(function(sec) {
       var item = document.createElement("div");
       var thumb = '<div class="media-thumb">';
       if (f.type === "img") {
-        thumb += '<img src="' + (f.cdn || path) + '" loading="lazy" onclick="openLightbox(this.src)" style="cursor:zoom-in"' + (f.cdn ? ' data-fallback="' + path + '"' : '') + '>';
+        thumb += '<img src="' + (f.cdn || cdnBase + encodeURIComponent(path.replace("Resources/",""))) + '" loading="lazy" onclick="openLightbox(this.src)" style="cursor:zoom-in" data-fallback="' + path + '">';
       } else {
-        thumb += '<video src="' + (f.cdn || path) + '" preload="metadata" muted playsinline' + (f.cdn ? ' data-fallback="' + path + '"' : '') + '></video>';
+        thumb += '<video src="' + (f.cdn || cdnBase + encodeURIComponent(path.replace("Resources/",""))) + '" preload="metadata" muted playsinline data-fallback="' + path + '"></video>';
         thumb += '<div class="play-overlay"><div class="play-icon"></div></div>';
       }
       thumb += '</div>';
