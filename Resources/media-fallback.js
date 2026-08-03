@@ -1,3 +1,4 @@
+if (window.MEDIA_FALLBACK !== 0) return;
 (function(){
   var F = window.__mediaFallback = {
     add: function(cdn, local) {

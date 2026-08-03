@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>图形渲染 - 童潇</title>
 <link rel="stylesheet" href="Resources/style.css">
+<script>var MEDIA_FALLBACK = 1;</script>
 <script src="Resources/media-fallback.js"></script>
 <style>
 .masonry { column-count: 2; column-gap: 14px; }
@@ -286,8 +287,10 @@ sections.forEach(function(sec) {
         var ppath = base + (dirName ? dirName + "/" : "") + pf.name;
         var pitem = document.createElement("div");
         pitem.className = "media-item";
-        var pcdn = pf.cdn || cdnBase + encodeURIComponent(ppath.replace("Resources/",""));
-        pitem.innerHTML = '<div class="media-thumb"><img src="' + pcdn + '" loading="lazy" onclick="openLightbox(this.src)" style="cursor:zoom-in" data-fallback="' + ppath + '"></div><div class="media-caption">' + (pf.caption || pf.name) + '</div>';
+        var cdnUrl = pf.cdn || cdnBase + encodeURIComponent(ppath.replace("Resources/",""));
+        var imgsrc = MEDIA_FALLBACK === 1 ? ppath : cdnUrl;
+        var fb = MEDIA_FALLBACK === 0 ? ' data-fallback="' + ppath + '"' : '';
+        pitem.innerHTML = '<div class="media-thumb"><img src="' + imgsrc + '" loading="lazy" onclick="openLightbox(this.src)" style="cursor:zoom-in"' + fb + '></div><div class="media-caption">' + (pf.caption || pf.name) + '</div>';
         pairDiv.appendChild(pitem);
       }
       grid.appendChild(pairDiv);
@@ -295,10 +298,13 @@ sections.forEach(function(sec) {
     } else {
       var item = document.createElement("div");
       var thumb = '<div class="media-thumb">';
+      var cdnUrl = f.cdn || cdnBase + encodeURIComponent(path.replace("Resources/",""));
+      var srcUrl = MEDIA_FALLBACK === 1 ? path : cdnUrl;
+      var fb = MEDIA_FALLBACK === 0 ? ' data-fallback="' + path + '"' : '';
       if (f.type === "img") {
-        thumb += '<img src="' + (f.cdn || cdnBase + encodeURIComponent(path.replace("Resources/",""))) + '" loading="lazy" onclick="openLightbox(this.src)" style="cursor:zoom-in" data-fallback="' + path + '">';
+        thumb += '<img src="' + srcUrl + '" loading="lazy" onclick="openLightbox(this.src)" style="cursor:zoom-in"' + fb + '>';
       } else {
-        thumb += '<video src="' + (f.cdn || cdnBase + encodeURIComponent(path.replace("Resources/",""))) + '" preload="metadata" muted playsinline data-fallback="' + path + '"></video>';
+        thumb += '<video src="' + srcUrl + '" preload="metadata" muted playsinline' + fb + '></video>';
         thumb += '<div class="play-overlay"><div class="play-icon"></div></div>';
       }
       thumb += '</div>';

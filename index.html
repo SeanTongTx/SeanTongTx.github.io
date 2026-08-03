@@ -5,6 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>童潇 - U3D 简历</title>
 <link rel="stylesheet" href="Resources/style.css">
+<script>
+var MEDIA_FALLBACK = 1; // 0=auto fallback, 1=force local, 2=force CDN
+(function(){
+  function apply() {
+    var m = MEDIA_FALLBACK;
+    if (m === 1) {
+      var avatar = document.querySelector('.avatar');
+      if (avatar) { avatar.src = 'Resources/tong1.png'; avatar.removeAttribute('data-fallback'); }
+      document.querySelectorAll('.cat-card-bg').forEach(function(el){
+        var local = el.getAttribute('data-bg-local');
+        if (local) { el.style.backgroundImage = "url('" + local + "')"; }
+        el.removeAttribute('data-bg-cdn');
+        el.removeAttribute('data-bg-local');
+      });
+    }
+    if (m === 2) {
+      document.querySelectorAll('[data-fallback]').forEach(function(el){ el.removeAttribute('data-fallback'); });
+      document.querySelectorAll('[data-bg-cdn]').forEach(function(el){
+        el.removeAttribute('data-bg-cdn');
+        el.removeAttribute('data-bg-local');
+      });
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', apply);
+  } else {
+    apply();
+  }
+})();
+</script>
 <script src="Resources/media-fallback.js"></script>
 </head>
 <body>
@@ -235,7 +265,10 @@
 
 </div>
 <div style="text-align:center;padding:20px 0;font-size:12px;color:#a0aec0;">
+<img src="Resources/备案图标.png"  style="width: 16px;">
+<a href="https://beian.mps.gov.cn/#/query/webSearch?code=33010202006041" rel="noreferrer" target="_blank">浙公网安备33010202006041号</a>
   <p><a href="https://beian.miit.gov.cn/" target="_blank" style="color:#a0aec0;text-decoration:none;">沪ICP备2020028215号</a></p>
+
 </div>
 </body>
 </html>
